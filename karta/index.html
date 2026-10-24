@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<meta name="color-scheme" content="light">
+<title>Карта возможностей</title>
+<style>
+:root {
+  --paper: #F6F7FA;
+  --paper-2: #ECEFF5;
+  --card: #FFFFFF;
+  --ink: #1A2233;
+  --ink-2: #4A5468;
+  --line: #D3D9E4;
+  --accent: #2A4BD6;
+  --accent-ink: #FFFFFF;
+  --accent-soft: #E3E9FD;
+  --mark-soft: #FFF5BF;
+  --ok: #1D7349;
+  --ok-soft: #DDF2E6;
+  --shadow: 0 1px 2px rgba(26,34,51,.06), 0 6px 18px rgba(26,34,51,.06);
+  --r: 14px;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: 1.125rem;
+  line-height: 1.6;
+}
+.wrap { max-width: 42rem; margin: 0 auto; padding: 0 1rem 3rem; }
+a { color: var(--accent); text-underline-offset: .15em; }
+a:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; border-radius: 4px; }
+p { margin: 0 0 .8em; }
+h1, h2, h3, h4 { line-height: 1.25; margin: 0; }
+
+/* Шапка */
+header { padding: 2rem 0 1rem; }
+.eyebrow { font-size: .85em; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; color: var(--accent); margin: 0 0 .6rem; }
+h1 { font-size: 1.85rem; font-weight: 800; margin-bottom: 1rem; }
+.lead { font-size: 1.05em; }
+
+/* Цифры рынка */
+.stats { display: grid; grid-template-columns: 1fr 1fr; gap: .75rem; margin: 1.25rem 0 .5rem; padding: 0; list-style: none; }
+.stat { background: var(--card); border: 1px solid var(--line); border-radius: var(--r); padding: .8rem .9rem; box-shadow: var(--shadow); }
+.stat b { display: block; font-size: 1.6rem; line-height: 1.15; color: var(--accent); }
+.stat span { display: block; font-size: .85em; line-height: 1.4; color: var(--ink-2); margin-top: .25rem; }
+.src { font-size: .8em; line-height: 1.45; color: var(--ink-2); }
+.stats-note { margin: .4rem 0 0; }
+
+/* Разделы */
+section { margin-top: 2.5rem; }
+h2 { font-size: 1.45rem; font-weight: 800; margin-bottom: .7rem; }
+
+/* Короткий список направлений */
+.overview { list-style: none; margin: 0; padding: 0; display: grid; gap: .6rem; counter-reset: ov; }
+.overview a {
+  display: block; text-decoration: none; color: var(--ink);
+  background: var(--card); border: 1px solid var(--line); border-radius: var(--r);
+  padding: .7rem .9rem .7rem 3.1rem; position: relative; min-height: 3.2rem;
+}
+.overview a::before {
+  counter-increment: ov; content: counter(ov);
+  position: absolute; left: .8rem; top: .75rem;
+  width: 1.75rem; height: 1.75rem; border-radius: 50%;
+  background: var(--accent-soft); color: var(--accent); font-weight: 800; font-size: .9em;
+  display: flex; align-items: center; justify-content: center;
+}
+.overview a:hover { border-color: var(--accent); }
+.overview strong { display: block; font-size: 1em; }
+.overview span { display: block; font-size: .85em; line-height: 1.4; color: var(--ink-2); }
+
+/* Карточки ролей */
+.role {
+  background: var(--card); border: 1px solid var(--line); border-radius: var(--r);
+  box-shadow: var(--shadow); padding: 1.1rem 1rem 1rem; margin: 0 0 1.4rem;
+  scroll-margin-top: 1rem;
+}
+.role.main { border-left: 6px solid var(--accent); }
+.tag {
+  display: inline-block; font-size: .8em; font-weight: 700; line-height: 1.3;
+  background: var(--accent-soft); color: var(--accent); padding: .2rem .65rem; border-radius: 99px; margin-bottom: .55rem;
+}
+.role h3 { font-size: 1.3rem; font-weight: 800; margin-bottom: .6rem; }
+.facts { margin: 0; }
+.facts > div { padding: .7rem 0; border-top: 1px solid var(--line); }
+.facts dt { font-size: .85em; font-weight: 700; color: var(--ink-2); margin-bottom: .15rem; }
+.facts dd { margin: 0; }
+.facts dd .src { display: block; margin-top: .3rem; }
+
+.vac-title { font-size: 1rem; font-weight: 800; margin: 1rem 0 .1rem; padding-top: .9rem; border-top: 2px solid var(--line); }
+.vac-note { margin: 0 0 .4rem; }
+.vac { list-style: none; margin: 0; padding: 0; }
+.vac li { padding: .65rem 0; border-top: 1px solid var(--line); }
+.vac li:first-child { border-top: 0; }
+.vac a.v { font-weight: 700; display: inline-block; }
+.vac .meta { font-size: .88em; line-height: 1.45; color: var(--ink-2); margin-top: .1rem; }
+.vac .meta b { color: var(--ink); font-weight: 700; }
+.fmt { display: inline-block; font-size: .85em; font-weight: 700; padding: 0 .5rem; border-radius: 6px; background: var(--paper-2); color: var(--ink); }
+.fmt.flex { background: var(--ok-soft); color: var(--ok); }
+
+/* Блоки внизу */
+.groups { display: grid; gap: .75rem; margin: 1rem 0 0; padding: 0; list-style: none; }
+.groups li { background: var(--card); border: 1px solid var(--line); border-radius: var(--r); padding: .85rem 1rem; }
+.groups h3 { font-size: 1.05rem; margin-bottom: .25rem; }
+.groups p { margin: 0; }
+.strengths { margin: 0; padding: 0; list-style: none; display: grid; gap: .7rem; }
+.strengths li { background: var(--card); border: 1px solid var(--line); border-radius: var(--r); padding: .8rem 1rem; }
+.strengths b { display: block; }
+.calm { background: var(--mark-soft); border-radius: var(--r); padding: 1rem 1.1rem; }
+.calm p:last-child { margin-bottom: 0; }
+
+footer { margin-top: 2.5rem; padding-top: 1rem; border-top: 1px solid var(--line); }
+footer p { margin-bottom: .5em; }
+
+@media (min-width: 640px) {
+  .wrap { padding: 0 1.5rem 4rem; }
+  h1 { font-size: 2.2rem; }
+  .role { padding: 1.4rem 1.5rem 1.2rem; }
+  .facts > div { display: grid; grid-template-columns: 11rem 1fr; gap: 1rem; }
+  .facts dt { margin: .2rem 0 0; }
+}
+@media print {
+  body { background: #fff; font-size: 12pt; }
+  .role, .stat, .groups li, .strengths li { box-shadow: none; break-inside: avoid; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <p class="eyebrow">Карта возможностей</p>
+  <h1>Куда можно пойти с твоим опытом</h1>
+  <p class="lead">Ты больше пяти лет закупала импортные продукты, у тебя более 8&nbsp;000 позиций, и ты работала с маркировкой и 1С. Такой набор нужен сразу в нескольких видах работы, и ниже шесть из них, от основного к запасным, с живыми вакансиями в Москве на 24 октября 2026. Цифры взяты с hh.ru: это то, что работодатели публикуют сейчас, а не чьё-то мнение.</p>
+
+  <ul class="stats">
+    <li class="stat"><b>1&nbsp;676</b><span>закупочных вакансий в Москве</span></li>
+    <li class="stat"><b>29%</b><span>из них допускают гибрид или удалёнку (478 вакансий)</span></li>
+    <li class="stat"><b>0 из 1&nbsp;545</b><span>просмотренных описаний содержат ограничение по возрасту</span></li>
+    <li class="stat"><b>6 из 10</b><span>вакансий не требуют высшего образования или не указывают его</span></li>
+  </ul>
+  <p class="src stats-note">По данным hh.ru, октябрь 2026 (выборка на 7 октября, Москва).</p>
+</header>
+
+<main>
+
+<section aria-labelledby="ov-h">
+  <h2 id="ov-h">Шесть направлений коротко</h2>
+  <p class="src" style="margin-bottom:.7rem">Зарплата на руки, медиана. Нажми на строку, чтобы перейти к описанию.</p>
+  <ol class="overview">
+    <li><a href="#r1"><strong>Менеджер по закупкам продуктов</strong><span>130&nbsp;000&nbsp;₽ · 1&nbsp;130 вакансий · гибрид или удалёнка у 24%</span></a></li>
+    <li><a href="#r2"><strong>Категорийный менеджер</strong><span>162&nbsp;500&nbsp;₽ · 257 вакансий · гибрид или удалёнка у 39%</span></a></li>
+    <li><a href="#r3"><strong>Закупщик у импортёра азиатских продуктов</strong><span>122&nbsp;500&nbsp;₽ по импорту и ВЭД · 384 вакансии · гибрид или удалёнка у 29%</span></a></li>
+    <li><a href="#r4"><strong>Специалист по маркировке</strong><span>120&nbsp;000&nbsp;₽ · 119 вакансий · гибрид или удалёнка у 33%</span></a></li>
+    <li><a href="#r5"><strong>Оператор 1С, учёт товаров</strong><span>85&nbsp;000&nbsp;₽ · 181 вакансия · гибрид или удалёнка у 5,5%</span></a></li>
+    <li><a href="#r6"><strong>Менеджер по снабжению</strong><span>120&nbsp;000&nbsp;₽ · 304 вакансии · гибрид или удалёнка у 11%</span></a></li>
+  </ol>
+</section>
+
+<section aria-labelledby="roles-h">
+  <h2 id="roles-h">Направления подробно</h2>
+
+  <!-- 1 -->
+  <article class="role main" id="r1">
+    <span class="tag">Главное направление</span>
+    <h3>Менеджер по закупкам продуктов</h3>
+    <dl class="facts">
+      <div><dt>Что это за работа</dt><dd>Ты ищешь поставщиков, договариваешься о цене и условиях, заказываешь товар под продажи и следишь, чтобы на складе было достаточно и ничего не залёживалось.</dd></div>
+      <div><dt>Почему подходит тебе</dt><dd>Это то, что ты делаешь сейчас: поставщики, ассортиментная матрица на 8&nbsp;000+ позиций, сроки годности, оборачиваемость. Снижение списаний на 75% хорошо видно в резюме, потому что оборачиваемость просят примерно в каждой четвёртой продуктовой вакансии.</dd></div>
+      <div><dt>Деньги и рынок</dt><dd>Медиана для менеджера по закупкам 130&nbsp;000&nbsp;₽ на руки. В продуктовых компаниях при опыте от трёх лет она около 150&nbsp;000 (данных немного, 26 вакансий). В Москве 1&nbsp;130 вакансий по закупкам, 208 из них в еде, рознице и HoReCa.<span class="src">По данным hh.ru, октябрь 2026.</span></dd></div>
+      <div><dt>Удалёнка и гибрид</dt><dd>Есть у 272 из 1&nbsp;130 вакансий (24%), в продуктовых компаниях у 64 из 208. Чаще это гибрид. Чистая удалёнка в закупках встречается реже и платит меньше, медиана около 114&nbsp;000&nbsp;₽.</dd></div>
+      <div><dt>На что обратить внимание</dt><dd>Английский упоминается примерно в каждой четвёртой вакансии (24%). Ещё просят Excel (сводные, ВПР), 1С и переговоры с поставщиками, это у тебя уже есть. Высшее образование указано примерно в каждой третьей вакансии (38%).</dd></div>
+    </dl>
+    <h4 class="vac-title">Живые вакансии, 24 октября 2026</h4>
+    <ul class="vac">
+      <li><a class="v" href="https://hh.ru/vacancy/137961171" target="_blank" rel="noopener noreferrer nofollow">Менеджер по закупкам (категория «Бакалея»)</a>
+        <div class="meta">SuperFood XXI (на hh.ru: Фелиса), поставки продуктов ресторанам и отелям<br><b>от 150&nbsp;000&nbsp;₽ на руки</b> · <span class="fmt">Офис</span></div></li>
+      <li><a class="v" href="https://hh.ru/vacancy/138223737" target="_blank" rel="noopener noreferrer nofollow">Менеджер по закупкам (продукты питания)</a>
+        <div class="meta">Экспресс, вендинговые аппараты в метро<br><b>от 135&nbsp;000 до 150&nbsp;000&nbsp;₽ на руки</b> · <span class="fmt">Офис</span></div></li>
+      <li><a class="v" href="https://hh.ru/vacancy/137680387" target="_blank" rel="noopener noreferrer nofollow">Менеджер по закупкам продовольственных товаров</a>
+        <div class="meta">Ресторан The Бык, закупки продуктов для ресторанов Москвы и регионов; просят опыт от трёх лет и Excel<br><b>от 140&nbsp;000 до 170&nbsp;000&nbsp;₽ на руки</b> · <span class="fmt">Офис</span></div></li>
+    </ul>
+  </article>
+
+  <!-- 2 -->
+  <article class="role" id="r2">
+    <span class="tag">Ступенька выше</span>
+    <h3>Категорийный менеджер</h3>
+    <dl class="facts">
+      <div><dt>Что это за работа</dt><dd>Ты отвечаешь за целую группу товаров, например готовую еду или кондитерку: что продавать, по какой цене, какие акции проводить и сколько категория приносит.</dd></div>
+      <div><dt>Почему подходит тебе</dt><dd>Ассортиментная матрица, оборачиваемость и списания на 8&nbsp;000+ позиций: это прямые компетенции категорийного менеджера. Разница в том, что к ним добавляются цена, акции и прибыль категории.</dd></div>
+      <div><dt>Деньги и рынок</dt><dd>Медиана 162&nbsp;500&nbsp;₽ на руки, а в продуктовых компаниях 185&nbsp;000 (по 82 и 36 вакансиям с указанной зарплатой). В Москве 257 вакансий, 161 из них в еде.<span class="src">По данным hh.ru, октябрь 2026.</span></dd></div>
+      <div><dt>Удалёнка и гибрид</dt><dd>Самый гибкий вариант среди закупок: гибрид или удалёнка у 102 из 257 вакансий (39%). Обычно это два или три дня в офисе.</dd></div>
+      <div><dt>На что обратить внимание</dt><dd>Спросят про маржу, ценообразование и промо-акции: ценообразование и маржа упоминаются в 68% описаний категорийных менеджеров. Если ты считала наценку или участвовала в акциях, напиши об этом в резюме. Курс не обязателен.</dd></div>
+    </dl>
+    <h4 class="vac-title">Живые вакансии, 24 октября 2026</h4>
+    <ul class="vac">
+      <li><a class="v" href="https://hh.ru/vacancy/138797250" target="_blank" rel="noopener noreferrer nofollow">Категорийный менеджер (торты, пирожные)</a>
+        <div class="meta">Ашан Ритейл Россия<br><b>от 130&nbsp;000&nbsp;₽ до вычета налога, примерно 113&nbsp;000 на руки</b> · <span class="fmt flex">Гибрид после испытательного срока</span></div></li>
+      <li><a class="v" href="https://hh.ru/vacancy/138005259" target="_blank" rel="noopener noreferrer nofollow">Категорийный менеджер (fresh-food)</a>
+        <div class="meta">Bodro Coffee, сеть кофеен<br><b>от 140&nbsp;000&nbsp;₽ на руки</b> · <span class="fmt flex">Гибрид</span></div></li>
+      <li><a class="v" href="https://hh.ru/vacancy/137797068" target="_blank" rel="noopener noreferrer nofollow">Старший категорийный менеджер СТМ (FMCG)</a>
+        <div class="meta">Х5, «Перекрёсток»; уровень выше: просят 5+ лет в ритейле и опыт категорийного управления<br><b>зарплата не указана</b> · <span class="fmt flex">Гибрид, 3 дня в офисе</span></div></li>
+    </ul>
+  </article>
+
+  <!-- 3 -->
+  <article class="role" id="r3">
+    <span class="tag">Твоя ниша</span>
+    <h3>Закупщик у импортёра или дистрибьютора азиатских продуктов</h3>
+    <dl class="facts">
+      <div><dt>Что это за работа</dt><dd>Компания ввозит продукты из других стран и продаёт их магазинам, сетям и ресторанам. Ты подбираешь и проверяешь поставщиков, согласуешь условия поставки, следишь за документами и маркировкой.</dd></div>
+      <div><dt>Почему подходит тебе</dt><dd>Ты знаешь, как устроены поставки из Японии, Кореи, Китая, Таиланда и Индонезии, и держишь в голове сроки годности и маркировку (Честный знак, Меркурий). Для импортёра это ежедневная работа.</dd></div>
+      <div><dt>Деньги и рынок</dt><dd>Вакансий именно про азиатские продукты немного: отчёт нашёл 18 закупочных вакансий в Москве с азиатскими странами в описании, про еду из них единицы. Если смотреть шире, на импорт и ВЭД, то это 384 вакансии с медианой 122&nbsp;500&nbsp;₽ на руки. В примерах у импортёров продуктов зарплата от 100&nbsp;000 до 350&nbsp;000.<span class="src">По данным hh.ru, октябрь 2026.</span></dd></div>
+      <div><dt>Удалёнка и гибрид</dt><dd>Редко. По импорту и ВЭД в целом гибрид или удалёнка у 29% вакансий, но у импортёров продуктов в найденных примерах почти везде офис.</dd></div>
+      <div><dt>На что обратить внимание</dt><dd>Английский: у импортёров его просят почти всегда, в примерах ниже письменный от уровня Intermediate до B2. Ещё спросят про договоры поставки, Инкотермс и ВЭД. Если ты работала напрямую с иностранными поставщиками, напиши об этом, это сильный аргумент.</dd></div>
+    </dl>
+    <h4 class="vac-title">Живые вакансии, 24 октября 2026</h4>
+    <ul class="vac">
+      <li><a class="v" href="https://hh.ru/vacancy/138703235" target="_blank" rel="noopener noreferrer nofollow">Менеджер по закупкам</a>
+        <div class="meta">Чайнафуд Групп, магазины азиатских товаров из Китая, Кореи и Вьетнама; просят опыт от трёх лет, ассортиментную матрицу и контроль сроков годности<br><b>зарплата не указана</b> · <span class="fmt">Офис</span></div></li>
+      <li><a class="v" href="https://hh.ru/vacancy/137962433" target="_blank" rel="noopener noreferrer nofollow">Менеджер по закупкам (импорт)</a>
+        <div class="meta">Азиано, импортные закупки для поставок в федеральные сети; в обязанностях в том числе «Честный знак». В требованиях: высшее образование, письменный английский не ниже Intermediate, опыт от трёх лет<br><b>зарплата не указана</b> · <span class="fmt">Офис</span></div></li>
+      <li><a class="v" href="https://hh.ru/vacancy/138186583" target="_blank" rel="noopener noreferrer nofollow">Менеджер по закупкам (импорт, продукты питания)</a>
+        <div class="meta">КонсалтсСити (ФУДМОЛЛ), один из крупных импортёров продуктов; просят опыт импортных закупок от пяти лет, английский, 1С и Excel<br><b>от 250&nbsp;000 до 350&nbsp;000&nbsp;₽ на руки</b> · <span class="fmt">Офис</span></div></li>
+    </ul>
+  </article>
+
+  <!-- 4 -->
+  <article class="role" id="r4">
+    <span class="tag">Есть гибрид и удалёнка</span>
+    <h3>Специалист по маркировке (Честный знак, ЕГАИС, Меркурий)</h3>
+    <dl class="facts">
+      <div><dt>Что это за работа</dt><dd>Ты ведёшь товары в государственных системах: заказываешь коды, вводишь товар в оборот и выводишь, сверяешь данные с 1С и решаешь ошибки вместе со складом и поставщиками.</dd></div>
+      <div><dt>Почему подходит тебе</dt><dd>Ты уже работаешь с Честным знаком, ЕГАИС и Меркурием и знаешь 1С. В вакансиях по маркировке это главные требования.</dd></div>
+      <div><dt>Деньги и рынок</dt><dd>Медиана 120&nbsp;000&nbsp;₽ на руки (23 вакансии с зарплатой). В удалённых вакансиях ниже, около 87&nbsp;000 (13 вакансий). В Москве 119 вакансий со словами «Честный знак» в названии.<span class="src">По данным hh.ru, октябрь 2026.</span></dd></div>
+      <div><dt>Удалёнка и гибрид</dt><dd>Есть у каждой третьей вакансии: 39 из 119 (33%). Для сравнения, у оператора 1С это 5,5%.</dd></div>
+      <div><dt>На что обратить внимание</dt><dd>Чаще просят опыт от одного до трёх лет (около 60% вакансий), работу с ЭДО (СБИС, Диадок, Контур) и знание конкретных групп товаров, у каждой свои правила. Часть удалённых вакансий оформляют по договору с самозанятым, это стоит уточнить до отклика.</dd></div>
+    </dl>
+    <h4 class="vac-title">Живые вакансии, 24 октября 2026</h4>
+    <ul class="vac">
+      <li><a class="v" href="https://hh.ru/vacancy/138043994" target="_blank" rel="noopener noreferrer nofollow">Ведущий специалист отдела маркировки «Честный знак»</a>
+        <div class="meta">Фудс Импорт, поставщик продуктов из Европы и Азии (кондитерские изделия)<br><b>от 120&nbsp;000&nbsp;₽ на руки</b> · <span class="fmt">Офис</span></div></li>
+      <li><a class="v" href="https://hh.ru/vacancy/138595190" target="_blank" rel="noopener noreferrer nofollow">Специалист по честному знаку / ВЭД / Логистика</a>
+        <div class="meta">GRACEFACE, бренд косметики; просят опыт с Честным знаком со стороны импортёра от одного года<br><b>от 110&nbsp;000&nbsp;₽ на руки</b> · <span class="fmt flex">Удалённо</span></div></li>
+      <li><a class="v" href="https://hh.ru/vacancy/137975923" target="_blank" rel="noopener noreferrer nofollow">Специалист по работе с системой ЧЗ (Честный знак)</a>
+        <div class="meta">YOKO, розница и дистрибуция; просят опыт с Честным знаком от одного года, 1С и ЭДО<br><b>130&nbsp;000&nbsp;₽ на руки</b> · <span class="fmt flex">Офис или гибрид</span></div></li>
+    </ul>
+  </article>
+
+  <!-- 5 -->
+  <article class="role" id="r5">
+    <span class="tag">Запасной вариант</span>
+    <h3>Оператор 1С, учёт товаров</h3>
+    <dl class="facts">
+      <div><dt>Что это за работа</dt><dd>Ты вносишь в 1С документы по движению товара: приходы, расходы, возвраты, перемещения, списания, сверки, и следишь, чтобы учёт совпадал со складом.</dd></div>
+      <div><dt>Почему подходит тебе</dt><dd>Ты вела ввод и учёт в 1С:УТ, работала со складом и приёмкой и обучала операторов. Из всех смежных ролей эта самая близкая к твоему опыту.</dd></div>
+      <div><dt>Деньги и рынок</dt><dd>Медиана 85&nbsp;000&nbsp;₽ на руки (69 вакансий с зарплатой), это заметно меньше, чем в закупках. 100&nbsp;000 и больше платят там, где к 1С добавлены склад, ЭДО, маркировка или закупки. В Москве 181 вакансия.<span class="src">По данным hh.ru, октябрь 2026.</span></dd></div>
+      <div><dt>Удалёнка и гибрид</dt><dd>Почти нет: у 10 из 181 вакансии (5,5%). Удалённая работа с 1С по России платит около 59&nbsp;000&nbsp;₽, поэтому для этой роли разумнее рассчитывать на офис.</dd></div>
+      <div><dt>На что обратить внимание</dt><dd>1С учится распознавать документы сама, поэтому чисто «вводящих» мест со временем станет меньше. Надёжнее выбирать роли, где к 1С добавлены маркировка, ЭДО, склад или закупки.</dd></div>
+    </dl>
+    <h4 class="vac-title">Живые вакансии, 24 октября 2026</h4>
+    <ul class="vac">
+      <li><a class="v" href="https://hh.ru/vacancy/138701646" target="_blank" rel="noopener noreferrer nofollow">Оператор 1С</a>
+        <div class="meta">Фелиса (SuperFood XXI), поставки продуктов ресторанам; опыт не обязателен<br><b>от 90&nbsp;000&nbsp;₽ на руки</b> · <span class="fmt">Офис</span></div></li>
+      <li><a class="v" href="https://hh.ru/vacancy/138598242" target="_blank" rel="noopener noreferrer nofollow">Оператор 1С (Честный знак)</a>
+        <div class="meta">Ювенко, работа с маркированным товаром и ЭДО<br><b>100&nbsp;000&nbsp;₽ на руки</b> · <span class="fmt flex">Офис или гибрид</span></div></li>
+      <li><a class="v" href="https://hh.ru/vacancy/137901817" target="_blank" rel="noopener noreferrer nofollow">Оператор 1С</a>
+        <div class="meta">Фруктовая лавка, поставщик федеральных сетей<br><b>от 83&nbsp;000 до 100&nbsp;000&nbsp;₽ на руки</b> · <span class="fmt">Офис</span></div></li>
+    </ul>
+  </article>
+
+  <!-- 6 -->
+  <article class="role" id="r6">
+    <span class="tag">При желании</span>
+    <h3>Менеджер по снабжению</h3>
+    <dl class="facts">
+      <div><dt>Что это за работа</dt><dd>Снабжение обеспечивает компанию всем, что нужно для работы: продуктами для кухни, сырьём, упаковкой, расходниками. Заказы идут по заявкам подразделений, а не под продажи.</dd></div>
+      <div><dt>Почему подходит тебе</dt><dd>Те же поставщики, договоры и контроль поставок, только закупка идёт под нужды самой компании: кухню, производство, склад. Здесь важны сроки годности и приёмка товара, а у тебя есть и склад, и приёмка.</dd></div>
+      <div><dt>Деньги и рынок</dt><dd>Медиана 120&nbsp;000&nbsp;₽ на руки (101 вакансия с зарплатой). В Москве 304 вакансии со словом «снабжение», но в еде, рознице и HoReCa только 24: основная часть про стройку и производство.<span class="src">По данным hh.ru, октябрь 2026.</span></dd></div>
+      <div><dt>Удалёнка и гибрид</dt><dd>Редко: у 34 из 304 вакансий (11%). В найденных примерах для общепита везде офис.</dd></div>
+      <div><dt>На что обратить внимание</dt><dd>Ищи по словам «ресторан», «общепит», «пищевое производство», «HoReCa», иначе поиск покажет стройку. В вакансии ресторана Цын Фын прямо просят работу в Меркурии и ЕГАИС, это у тебя есть.</dd></div>
+    </dl>
+    <h4 class="vac-title">Живые вакансии, 24 октября 2026</h4>
+    <ul class="vac">
+      <li><a class="v" href="https://hh.ru/vacancy/138179261" target="_blank" rel="noopener noreferrer nofollow">Менеджер по закупкам и снабжению / Закупщик</a>
+        <div class="meta">Цын Фын, ресторан у метро Цветной бульвар; в требованиях Меркурий, ЕГАИС, Честный знак<br><b>от 110&nbsp;000&nbsp;₽ на руки</b> · <span class="fmt">Офис</span></div></li>
+      <li><a class="v" href="https://hh.ru/vacancy/138559608" target="_blank" rel="noopener noreferrer nofollow">Менеджер по закупкам питания</a>
+        <div class="meta">Гостиница Волга, ресторанная группа; закупки продуктов, сырья и упаковки<br><b>от 140&nbsp;000&nbsp;₽ на руки</b> · <span class="fmt">Офис</span></div></li>
+      <li><a class="v" href="https://hh.ru/vacancy/138792795" target="_blank" rel="noopener noreferrer nofollow">Менеджер по закупкам и снабжению</a>
+        <div class="meta">Mercury, премиальный ресторан и кафе в ЦУМе; в задачах матрица продуктов и работа с поставщиками<br><b>зарплата не указана</b> · <span class="fmt">Офис</span></div></li>
+    </ul>
+  </article>
+</section>
+
+<section aria-labelledby="valued-h">
+  <h2 id="valued-h">Где тебя ценят больше всего</h2>
+  <p>Твой набор (импортные продукты, сроки годности, маркировка, 1С) нужнее всего там, где товар ввозят, хранят и быстро продают. В вакансиях за последние недели это пять типов компаний, и в их описаниях встречаются ассортиментная матрица, сроки годности, Меркурий и Честный знак.</p>
+  <ul class="groups">
+    <li>
+      <h3>Импортёры и дистрибьюторы</h3>
+      <p>Чайнафуд Групп (азиатские товары из Китая, Кореи и Вьетнама), ФУДМОЛЛ (КонсалтсСити), Фудс Импорт (продукты из Европы и Азии), Азиано (импорт для федеральных сетей), Мастерфуд (импортные закупки, кофе), <a href="https://hh.ru/vacancy/138074061" target="_blank" rel="noopener noreferrer nofollow">БПК</a> (ищет поставщиков из стран Азии, от 180&nbsp;000&nbsp;₽ на руки, но нужен английский уровня C1).</p>
+    </li>
+    <li>
+      <h3>Оптовики и поставщики ресторанов</h3>
+      <p>SuperFood XXI (на hh.ru: Фелиса) поставляет продукты ресторанам, кафе и отелям, а «Изобилие» поставляет продукты в рестораны, кафе и столовые. Обе компании ищут закупщиков.</p>
+    </li>
+    <li>
+      <h3>Средние сети</h3>
+      <p>Экспресс (вендинг в московском метро), Bodro Coffee (сеть кофеен), Крошка Картошка (69 кафе в Москве и области). В вакансии Экспресс прямо названы оборачиваемость, ОСГ и ассортиментная матрица.</p>
+    </li>
+    <li>
+      <h3>Рестораны и гостиничные группы</h3>
+      <p>Цын Фын, Гостиница Волга, Mercury и ресторан The Бык ищут человека на закупки продуктов, и в одном из объявлений прямо назван опыт с Меркурием и ЕГАИС.</p>
+    </li>
+    <li>
+      <h3>Крупные сети</h3>
+      <p>Ашан и Х5 тоже нанимают, особенно категорийных менеджеров, и часто с гибридом. Зарплату в объявлении они часто не называют, а в офис иногда нужно ходить два или три дня в неделю.</p>
+    </li>
+  </ul>
+</section>
+
+<section aria-labelledby="str-h">
+  <h2 id="str-h">Твои сильные стороны</h2>
+  <ul class="strengths">
+    <li><b>Большой ассортимент</b>Более 8&nbsp;000 позиций от поставщиков из Японии, Кореи, Китая, Таиланда и Индонезии. Для импортёров и сетей с импортным ассортиментом это готовый опыт, который не нужно объяснять с нуля.</li>
+    <li><b>Результат в цифрах</b>Ты снизила списания на 75% за счёт контроля оборачиваемости. Оборачиваемость просят примерно в каждой четвёртой продуктовой вакансии, и у тебя есть конкретный результат, а не только слова.</li>
+    <li><b>Маркировка</b>Честный знак, ЕГАИС, Меркурий. Меркурий упоминается в 7% продуктовых вакансий, ЕГАИС в 1,6%, поэтому такой опыт выделяет кандидата.</li>
+    <li><b>Системы</b>1С (Управление торговлей, Рарус) и Excel со сводными таблицами и ВПР. 1С упоминают примерно в половине закупочных вакансий (48%), Excel в 46%. Нейросетями ты тоже пользуешься.</li>
+    <li><b>Умение передавать знания</b>Ты обучала операторов и вместе с программистами внедряла отчёты в 1С. Такой опыт пригодится, если захочешь на позицию ведущего специалиста. В продуктовой рознице ты с 2013 года, из них больше пяти лет на последнем месте.</li>
+  </ul>
+</section>
+
+<section aria-labelledby="no-h">
+  <h2 id="no-h">Почему отказы — это не про тебя</h2>
+  <div class="calm">
+    <p>В 2026 году на одну офисную вакансию приходится от 20 до 30 резюме, а при опыте больше десяти лет в среднем около 23 откликов на место против примерно 10 при опыте от трёх до пяти лет. Поиск работы после 50 обычно занимает от трёх до пяти месяцев, а ты ищешь около одного.</p>
+    <p>Среди 1&nbsp;545 описаний закупочных вакансий в Москве прямых ограничений по возрасту не нашлось, поэтому часть отказов объясняется просто конкуренцией, а не тобой и не твоим опытом.</p>
+    <p class="src">Первые цифры: данные hh.ru в публикациях деловых изданий за 2025 и 2026 годы. Про описания вакансий: выборка hh.ru на 7 октября 2026.</p>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <p><b>Данные обновлены 24 октября 2026.</b></p>
+  <p class="src">Число вакансий, зарплаты и доли гибрида и удалёнки: по данным hh.ru, Москва, выборка на 7 октября 2026. Вакансии в карточках проверены 24 октября 2026 и могут закрыться в любой момент. Зарплаты указаны на руки; если работодатель назвал сумму до вычета налога, рядом написан пересчёт. Медиана означает середину: половина вакансий платит меньше, половина больше.</p>
+</footer>
+
+</div>
+</body>
+</html>
